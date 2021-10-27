@@ -42,8 +42,12 @@ Content-type:text/html\n\n
     <b>
       <h4> Use the slider to adjust the angle </h4>
     </b>
+    </font>
     <form action="/cgi-bin/stepper_control.cgi" method="POST">
-      <input type="range" name="slider" min ="0" max="360" value="0"/>
+      <font size="2" color="black" face="helvetica">""")
+print("Current Angle : %f" %s inputAngle)  
+print("""
+    <input type="range" name="slider" min ="0" max="360" value="0"/>
       <br>
       <br>
       <input type="submit" name="action" value="Change Stepper Motor Angle"/>
@@ -51,8 +55,9 @@ Content-type:text/html\n\n
     </form>
     <br>
     <iframe width="450" height="260" 
-    style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1550866/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15">
+    style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1550866/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Motor+Angle+vs+Time&type=line&xaxis=Time&yaxis=Motor+Angle">
     </iframe>
+    <br>
     <iframe width="450" height="260" 
     style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1550866/widgets/373037">
     </iframe>
