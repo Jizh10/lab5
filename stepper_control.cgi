@@ -47,15 +47,13 @@ Content-type:text/html\n\n
       <br>
       <br>
       <input type="submit" name="action" value="Change Stepper Motor Angle"/>
-      <br>
       <input type="submit" name="action" value="Zero Stepper Motor Angle"/>
     </form>
     <br>
     <iframe width="450" height="260" 
     style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1550866/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15">
-    </iframe>
     <iframe width="450" height="260" 
-    style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1550866/widgets/373035">
+    style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1550866/widgets/373037">
     </iframe>
   </body>   
 </html>
