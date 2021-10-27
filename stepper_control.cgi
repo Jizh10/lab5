@@ -50,6 +50,7 @@ Content-type:text/html\n\n
 print("Current Angle: %f" %s inputAngle)
 print("""
       <br>
+      <br>
       <input type="submit" name="action" value="Change Stepper Motor Angle"/>
       <input type="submit" name="action" value="Zero Stepper Motor Angle"/>
     </form>
