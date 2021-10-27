@@ -44,11 +44,11 @@ Content-type:text/html\n\n
     </b>
     </font>
     <form action="/cgi-bin/stepper_control.cgi" method="POST">
-      <font size="2" color="black" face="helvetica">""")
-print("Current Angle : %f" %s inputAngle)  
-print("""
+      <font size="2" color="black" face="helvetica">  
     <input type="range" name="slider" min ="0" max="360" value="0"/>
-      <br>
+      <br>""")
+print("Current Angle: %f" %s inputAngle)
+print("""
       <br>
       <input type="submit" name="action" value="Change Stepper Motor Angle"/>
       <input type="submit" name="action" value="Zero Stepper Motor Angle"/>
