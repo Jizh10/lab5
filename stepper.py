@@ -11,6 +11,7 @@ class Stepper:
     self.pins = pins
     self.state = 0
     self.angle = 0
+    GPIO.setmode(GPIO.BCM)
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
 
