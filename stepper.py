@@ -15,6 +15,12 @@ class Stepper:
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
 
+  def __delay_us(self, tus):
+    endTime = time.time() + float(tus)/float(1E6)
+    while time.time() < endTime:
+      pass
+    
+
   def __halfStep(self, dir):
     # dir = +/- 1 (ccw / cw)
     self.state += dir
@@ -25,7 +31,7 @@ class Stepper:
     
     for pin in range(len(self.pins)):
       GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
-    time.sleep(0.001)
+    self.__delay_us(1000)
 
     self.angle += dir*Stepper.halfStepAngle
 
