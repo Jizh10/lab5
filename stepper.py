@@ -3,6 +3,7 @@ import time
 
 class Stepper:
   
+  #ccw sequence
   sequence = [[1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
             [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1]]
   halfStepAngle = 360.0/512.0
@@ -19,27 +20,24 @@ class Stepper:
     endTime = time.time() + float(tus)/float(1E6)
     while time.time() < endTime:
       pass
-    
 
   def __halfStep(self, dir):
     # dir = +/- 1 (ccw / cw)
+    print('current state: %f' % self.state)
     self.state += dir
     if self.state > 7:
       self.state = 0
     elif self.state < 0:
       self.state = 7
-    
-    print('current angle: %f' % self.angle)
+    print('after state: %f' % self.state)
 
+    
     for pin in range(len(self.pins)):
       GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
-    self.__delay_us(1000)
-
-    
-    print('half step change: %f' % Stepper.halfStepAngle)
-
+    self.__delay_us(1000000)
+  
     self.angle += dir*Stepper.halfStepAngle
-    print('after halfstep: %f' % self.angle)
+   
 
   def __moveSteps(self, steps, dir):
     
@@ -47,14 +45,19 @@ class Stepper:
       self.__halfStep(dir)
 
   def goAngle(self, angle):
+    print('start go angle')
     if angle < self.angle:
       dir = -1
+      print('direction: %f' % dir)
       while angle < self.angle:
         self.__halfStep(dir)
+      print('got to angle')
     else:
+      print('direction: %f' % dir)
       dir = 1
       while angle > self.angle:
         self.__halfStep(dir)
+      print('got to angle')
 
   def zero(self, ldr, ledPin):
     GPIO.output(ledPin, 1)

@@ -15,6 +15,6 @@ while True:
       stepMotor.goAngle(data['angle'])
     else:
       stepMotor.zero(ldr, ledPin)
-  time.sleep(0.1)
+  time.sleep(0.01)
 
 
