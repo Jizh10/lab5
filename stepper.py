@@ -23,15 +23,13 @@ class Stepper:
 
   def __halfStep(self, dir):
     # dir = +/- 1 (ccw / cw)
-    print('current state: %f' % self.state)
+   
     self.state += dir
     if self.state > 7:
       self.state = 0
     elif self.state < 0:
       self.state = 7
-    print('after state: %f' % self.state)
-
-    
+      
     for pin in range(len(self.pins)):
       GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
     self.__delay_us(100000)
@@ -75,3 +73,6 @@ class Stepper:
         zero = True
     
     GPIO.output(ledPin, 0)
+  
+  def cleanUp(self):
+    GPIO.cleanup()

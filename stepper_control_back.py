@@ -8,13 +8,18 @@ ldr = PCF(0x48)
 ledPin = 26 
 stepMotor = Stepper(stepperPins)
 
-while True:
-  with open("/usr/lib/cgi-bin/lab5.txt",'r') as f:
-    data = json.load(f)
+try:
+  while True:
+    with open("/usr/lib/cgi-bin/lab5.txt",'r') as f:
+      data = json.load(f)
     if data['action'] == "change angle":
       stepMotor.goAngle(data['angle'])
     else:
       stepMotor.zero(ldr, ledPin)
-  time.sleep(0.01)
-
+    time.sleep(0.01)
+except KeyboardInterrupt:
+  print('\nExiting')
+finally:
+  stepMotor.cleanUp()
+  
 
