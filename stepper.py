@@ -53,8 +53,8 @@ class Stepper:
         self.__halfStep(dir)
       print('got to angle')
     else:
-      print('direction: %f' % dir)
       dir = 1
+      print('direction: %f' % dir)
       while angle > self.angle:
         self.__halfStep(dir)
       print('got to angle')
