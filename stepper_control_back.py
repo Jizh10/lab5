@@ -16,7 +16,7 @@ try:
       stepMotor.goAngle(data['angle'])
     else:
       stepMotor.zero(ldr, ledPin)
-    time.sleep(0.01)
+    time.sleep(0.1)
 except KeyboardInterrupt:
   print('\nExiting')
 finally:
