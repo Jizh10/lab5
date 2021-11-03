@@ -29,11 +29,14 @@ class Stepper:
     elif self.state < 0:
       self.state = 7
     
+    print('current angle: %f' % self.angle)
+
     for pin in range(len(self.pins)):
       GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
     self.__delay_us(1000)
 
     self.angle += dir*Stepper.halfStepAngle
+    print('after halfstep: %f' % self.angle)
 
   def __moveSteps(self, steps, dir):
     
