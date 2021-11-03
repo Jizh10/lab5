@@ -6,7 +6,7 @@ class Stepper:
   #ccw sequence
   sequence = [[1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
             [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1]]
-  halfStepAngle = 360.0/512.0
+  halfStepAngle = 360.0/4096.0
   
   def __init__(self, pins):
     self.pins = pins
