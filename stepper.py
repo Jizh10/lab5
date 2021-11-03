@@ -34,7 +34,7 @@ class Stepper:
     
     for pin in range(len(self.pins)):
       GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
-    self.__delay_us(1000000)
+    self.__delay_us(100000)
   
     self.angle += dir*Stepper.halfStepAngle
    
