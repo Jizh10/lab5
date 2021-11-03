@@ -5,7 +5,7 @@ class Stepper:
   
   sequence = [[1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
             [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1]]
-  halfStepAngle = 360/512
+  halfStepAngle = 360.0/512.0
   
   def __init__(self, pins):
     self.pins = pins
@@ -35,7 +35,8 @@ class Stepper:
       GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
     self.__delay_us(1000)
 
-    print('half step change: %f' % 360/512)
+    
+    print('half step change: %f' % Stepper.halfStepAngle)
 
     self.angle += dir*Stepper.halfStepAngle
     print('after halfstep: %f' % self.angle)
