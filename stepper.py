@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import PCF8591 as PCF
+import time
 
 class Stepper:
   
@@ -7,14 +7,14 @@ class Stepper:
             [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1]]
   halfStepAngle = 360/512
   
-  def __init__(pins):
+  def __init__(self, pins):
     self.pins = pins
     self.state = 0
     self.angle = 0
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
 
-  def __halfStep(dir):
+  def __halfStep(self, dir):
     # dir = +/- 1 (ccw / cw)
     self.state += dir
     if self.state > 7:
@@ -23,17 +23,17 @@ class Stepper:
       self.state = 7
     
     for pin in range(len(self.pins)):
-      GPIO.output(pins[pin], sequence[state][pin])
-    delay_us(1000)
+      GPIO.output(self.pins[pin], Stepper.sequence[self.state][pin])
+    time.delay_us(1000)
 
-    self.angle += dir*halfStepAngle
+    self.angle += dir*Stepper.halfStepAngle
 
-  def __moveSteps(steps, dir):
+  def __moveSteps(self, steps, dir):
     
     for step in steps:
       self.__halfStep(dir)
 
-  def goAngle(angle):
+  def goAngle(self, angle):
     if angle < self.angle:
       dir = -1
       while angle < self.angle:
@@ -43,7 +43,7 @@ class Stepper:
       while angle > self.angle:
         self.__halfStep(dir)
 
-  def zero(ldr, ledPin):
+  def zero(self, ldr, ledPin):
     GPIO.output(ledPin, 1)
     ldrVal = ldr.read(0)
     zero = False
