@@ -1,5 +1,5 @@
 import stepper
-import PCF8591 as PCF
+from PCF8591 import PCF8591 as PCF
 import json
 import time
 
